@@ -328,9 +328,9 @@ namespace ZYH_ICE
         private Condition enemyLessHitAndFarFromHome;
         private Condition goToStarNodeContion;
 
-        public int index;    //ÒªÈ¥µÄÐÇÐÇµÄË÷Òý
-        public Vector3 goodPosition;    //ºÃÎ»ÖÃ
-        public Dictionary<int, Missile> directMissiles;    //Ö±Ïòµ¼µ¯
+        public int index;    //ÒªÈ¥ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½
+        public Vector3 goodPosition;    //ï¿½ï¿½Î»ï¿½ï¿½
+        public Dictionary<int, Missile> directMissiles;    //Ö±ï¿½òµ¼µï¿½
 
         protected override void OnStart()
         {
@@ -465,14 +465,14 @@ namespace ZYH_ICE
 
             Tank oppTank = Match.instance.GetOppositeTank(Team);
 
-            //ÅÚ¹ÜÃé×¼µÐÈË
-            //¾ß±¸¿ª»ðÌõ¼þÔò¿ª»ð
+            //ï¿½Ú¹ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½
+            //ï¿½ß±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò¿ª»ï¿½
             TurnTurret();
 
             chooseGoodPosition();
             if (goToSuperStar.IsTrue(this))
             {
-                Debug.Log("È¥³¬¼¶ÐÇÐÇÄÇ");
+                Debug.Log("È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                 Move(Vector3.zero);
             }
             else if (avoidMissile.IsTrue(this))
@@ -489,27 +489,27 @@ namespace ZYH_ICE
             {
                 if (goToEnemy.IsTrue(this))
                 {
-                    Debug.Log("È¥µÐÈËÄÇ");
+                    Debug.Log("È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                     Move(oppTank.Position);
                 }
                 else if (goBackHome.IsTrue(this))
                 {
-                    Debug.Log("»Ø¼Ò");
+                    Debug.Log("ï¿½Ø¼ï¿½");
                     Move(Match.instance.GetRebornPos(Team));
                 }
                 else if (goToStar.IsTrue(this))
                 {
-                    Debug.Log("È¥ÐÇÐÇÄÇ");
+                    Debug.Log("È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                     Move(Match.instance.GetStarByID(index).Position);
                 }
                 else if (goToGoodPosition.IsTrue(this))
                 {
-                    Debug.Log("È¥ºÃÎ»ÖÃ");
+                    Debug.Log("È¥ï¿½ï¿½Î»ï¿½ï¿½");
                     Move(goodPosition);
                 }
                 else
                 {
-                    Debug.Log("²»ºÏÀí°¡");
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
                 }
             }
         }
@@ -617,7 +617,7 @@ namespace ZYH_ICE
             {
                 Missile missile = pair.Value;
                 Vector3 onWhichSideInfo = Vector3.Cross(missile.Velocity, this.Position - missile.Position);
-                //´¹Ö±ÓÚµ¼µ¯ËÙ¶È¶ã±Ü
+                //ï¿½ï¿½Ö±ï¿½Úµï¿½ï¿½ï¿½ï¿½Ù¶È¶ï¿½ï¿½
                 Vector3 cross = Vector3.Cross(missile.Velocity, Vector3.up).normalized;
                 if (onWhichSideInfo.y > 0)
                     cross *= -1;
